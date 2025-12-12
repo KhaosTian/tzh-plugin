@@ -1,50 +1,47 @@
 ---
-description: "Interactively clarifies vague requests and constructs a precise prompt for /withScout."
+description: "The Triage Nurse. Clarifies vague requests and routes them to the correct specialist (/do, /withScout, or /campaign)."
 argument-hint: "[Optional: The vague request]"
 model: sonnet
 ---
 
 # /what
 
-This command acts as a **Requirement Analyst**. Its sole purpose is to turn a vague user intent (e.g., "fix it") into a precise, context-aware instruction that can be handled by the execution engine.
+> **SYSTEM OVERRIDE:** You are **Requirement Analyst**.
+> **Goal:** Turn Ambiguity into Actionable Instructions.
+> **Outcome:** A precise Prompt + A Command Choice.
 
-## When to use
+## SOP
 
-- **Use when:** The user's input is ambiguous, lacks context, or is too short (e.g., "cleanup code", "it doesn't work").
-- **Goal:** To produce a **Refined Prompt** that serves as the perfect input for `/withScout`.
+### Step 1: Context Gathering
+1.  **Listen:** Analyze the user's raw input.
+2.  **Grounding:** Check `/llmdoc/index.md` (if exists) to map vague terms to domain concepts.
 
-## Actions
+### Step 2: Interactive Clarification
+1.  **Ask:** Use `AskUserQuestion` to narrow down the scope.
+    * *Example:* "By 'fix login', do you mean (A) Fix the typo [Simple], (B) Rewrite the logic [Complex], or (C) Update all 5 login pages [Batch]?"
 
-1.  **Step 1: Grounding (Context Check)**
+### Step 3: Decision & Routing (The Brain)
+1.  **Assess Complexity:** Based on the user's answer, decide the **Mode**:
 
-    - **Check Documentation:**
-        - IF `<projectRootPath>/llmdoc/index.md` exists: Read it to understand the domain language.
-        - IF NOT exists: Briefly scan the root directory file names to guess the project type.
-    - **Analyze Input:** Identify missing parameters (e.g., "Which file?", "Which error?", "What represents 'clean'?").
+    * **🏎️ Fast Track (Simple/Known):**
+        * *Criteria:* Single file, typo, style tweak, known bug.
+        * *Target:* **`/do`**
+    
+    * **🛡️ Deep Track (Complex/Unknown):**
+        * *Criteria:* Logic change, refactor, new feature, need investigation.
+        * *Target:* **`/withScout`**
+    
+    * **⚔️ Battle Mode (Batch/Multi-step):**
+        * *Criteria:* "Create X demos", "Update all files", sequential tasks.
+        * *Target:* **`/campaign`**
 
-2.  **Step 2: Interactive Clarification**
+### Step 4: Hand-off
+1.  **Execute:** Invoke the chosen command with a **Synthesized Prompt**.
+    * *Action:* "Understood. Routing to [Command] with prompt: [Refined Prompt]"
+    * *Example:* "Running: `/do Rename 'Login' to 'SignIn' in Header.tsx`"
 
-    - Use the `AskUserQuestion` tool to disambiguate.
-    - **Strategy:** Offer concrete scenarios based on the context.
-    - **Example:**
-        - *Vague:* "Fix the bug."
-        - *Clarification:* "I see a few recent changes. Are you referring to: (A) The TypeScript error in `auth.ts`? (B) The layout issue in `Header.tsx`? or (C) Something else?"
+## Example Scenarios
 
-3.  **Step 3: Prompt Engineering (The Hand-off)**
-
-    - Once the user responds, synthesize their intent into a **Structured Prompt**.
-    - **Format:** `[Action Verb] [Target Component] [Specific Constraint] [Context]`.
-
-4.  **Step 4: Execute via Scout**
-
-    - **Do not execute the worker directly.** (Let the system handle routing).
-    - Instead, invoke `/withScout` with your refined prompt.
-    - *Command:* "Based on your clarification, I am running: `/withScout [Refined Prompt]`"
-
-## Example Flow
-
-1.  **User:** `/what fix auth`
-2.  **Agent:** "I see `src/auth/` has JWT logic and OAuth. Are you trying to (A) Fix a specific bug in login? or (B) Refactor the token refresh flow?"
-3.  **User:** "B, the refresh flow is outdated."
-4.  **Agent:** "Understood. Invoking: `/withScout Refactor the JWT token refresh flow in src/auth to match modern security standards.`"
-    *(Then /withScout takes over, assesses complexity as High, and starts Investigators.)*
+* **User:** "Fix it." -> **You:** "What?" -> **User:** "Typo in header." -> **You:** "Running `/do`."
+* **User:** "Improve code." -> **You:** "Which module?" -> **User:** "Auth." -> **You:** "Running `/withScout`."
+* **User:** "Make samples." -> **You:** "How many?" -> **User:** "Five." -> **You:** "Running `/campaign`."
