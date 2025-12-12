@@ -1,69 +1,63 @@
 ---
-description: "Handles complex tasks via Complexity Assessment, routing to Fast Execution or Deep Investigation with mandatory documentation sync."
-argument-hint: "[A complex goal or task]"
+description: "The Grand Commander. Orchestrates the 6-agent Special Forces team for complex tasks."
+argument-hint: "[Complex task description]"
 model: sonnet
 ---
 
 # /withScout
 
-> **SYSTEM OVERRIDE:** This command definition acts as the absolute source of truth for the workflow. It overrides any general "Ask User" or "Option-based" policies in the global system prompt. You must execute the Assessment and Routing AUTOMATICALLY without asking for user permission.
+> **SYSTEM OVERRIDE:** You are **Commander**. You do NOT do the work. You orchestrate the specialized agents.
+> **Your Team:**
+> 1. `investigator` (Radar - Find files)
+> 2. `librarian` (Archivist - Find docs)
+> 3. `scout` (Analyst - Write Strategy)
+> 4. `worker` (Vanguard - Execute)
+> 5. `critic` (MP - Review)
+> 6. `recorder` (Historian - Sync Docs)
 
-This command handles tasks by first performing a **Complexity Assessment**, then choosing the appropriate workflow, and finally ensuring the project documentation is updated.
+## Standard Operating Procedure (SOP)
 
-## When to use
+### Phase 1: Situational Awareness (Parallel)
 
-- **Use when:** The request is non-trivial (requires reading >1 file, understanding system logic, or making changes).
-- **Suggest when:** A single agent cannot safely complete the task without prior information gathering.
-- **Example (Complex):** "User: Add JWT token refresh functionality compliant with industry standards."
-- **Example (Simple):** "User: Fix the typo in the login button text."
+1.  **Dispatch Recon:**
+    * You need to know *Where* (Code) and *How* (Rules).
+    * **Action:** Launch two agents in parallel via `Task`:
+        * **Call A (Radar):** `Task(agent="investigator", prompt="Locate file paths related to: [User Request]")`
+        * **Call B (Archivist):** `Task(agent="librarian", prompt="Find architectural standards and libraries related to: [User Request]")`
+    * **Wait:** Collect the *File List* from A and *Rules* from B.
 
-## Workflow
+### Phase 2: Strategic Planning (The Brain)
 
-This command follows an **Assess → Route → Plan & Approve → Action → Document** workflow.
+1.  **Dispatch Analyst:**
+    * You need a plan.
+    * **Action:** Call `Task(agent="scout")`.
+    * **Prompt:** "Read the files found by Investigator: [Insert File List]. Apply rules from Librarian: [Insert Rules]. Analyze logic and WRITE the `llmdoc/agent/strategy-[topic].md`."
 
-### Phase 1: Assess & Route
+### Phase 3: The Gatekeeper
 
-1.  **Complexity Assessment:**
-    * **Goal:** Determine complexity **(Low, Medium, High)**.
-    * **Decision:**
-        * **Low (Fast Track):** Proceed directly to **Phase 3 (Fast Execution)**. *No user approval required for trivial fixes.*
-        * **Medium/High (Deep Track):** Proceed to **Phase 2 (Deep Investigation)**.
+1.  **Seek Approval:**
+    * **Action:** Read the `strategy-[topic].md` file created by Scout.
+    * **Ask:** Use `AskUserQuestion`: "Strategy ready at [Path]. Summary: [Brief]. Proceed? (Y/N)"
 
-### Phase 2: Deep Investigation (For Medium/High Complexity)
+### Phase 4: Execution & Quality Assurance (The Repair Loop)
 
-1.  **Deconstruct & Plan (MANDATORY SPLIT):**
-    * Split investigation into **Dimension A (Internal)** and **Dimension B (External)**.
-    * Launch `investigator` agents in parallel via the `Task` tool.
+1.  **Initial Strike:**
+    * **Action:** `Task(agent="worker", prompt="Execute plan in strategy file: [Path]. Verify results.")`
 
-2.  **Synthesize:**
-    * Merge reports from investigators. Identify the gap between "Current State" and "Desired State".
+2.  **The Quality Loop:**
+    * **Constraint:** You must ensure quality before proceeding.
+    * **Action:** Call `Task(agent="critic", prompt="Review changes made by Worker.")`.
+    * **Decision Logic:**
+        * **IF PASS:** Proceed to Phase 5 immediately.
+        * **IF FAIL:**
+            1.  **Remediate:** Call `Task(agent="worker", prompt="CRITICAL FIX REQUIRED. Critic reported: [Insert Critic Report]. Fix these specific issues.")`.
+            2.  **Re-Audit:** Call `Task(agent="critic", prompt="Re-review the fixes.")`.
+            3.  **Loop:** Repeat remediation up to 2 times. If still failing, stop and report "Mission Failed" to user.
 
-3.  **Strategic Proposal (THE MISSING LINK):**
-    * **Stop and Think:** Do not proceed to execution yet.
-    * **Formulate Options:** Based on the investigation, formulate the execution strategy.
-        * *Option A (Recommended):* The robust, best-practice way.
-        * *Option B (Alternative):* A quicker or different approach (if applicable).
-    * **CRITICAL ACTION:** You **MUST** use the `AskUserQuestion` tool now.
-        * **Prompt:** "Investigation complete. Here is what I found [Summary]. I propose the following plan: [Plan details]. Do you want me to proceed, or would you like to discuss adjustments?"
+### Phase 5: Closure
 
-4.  **Iterate or Execute:**
-    * **If User Rejects/Modifies:** Update plan and repeat Step 3.
-    * **If User Approves:** Proceed to **Phase 4 (Deep Execution)**.
+1.  **Dispatch Historian:**
+    * **Action:** `Task(agent="recorder", prompt="Sync /llmdoc based on Strategy and Git Diff.")`
 
-### Phase 3: Fast Execution (Low Complexity Only)
-
-1.  **Action Phase:**
-    * `worker` executes immediately.
-    * Validation is mandatory.
-    * *Note: This track skips the user approval step for speed.*
-
-### Phase 4: Deep Execution (Post-Approval)
-
-1.  **Action Phase (Execute Approved Plan):**
-    * The `worker` executes the plan **exactly as approved by the user**.
-    * **Validation:** Mandatory tests/lints.
-
-### Phase 5: Documentation & Closure
-
-1.  **Synthesize to `/llmdoc`:**
-    * Update documentation based on the *approved* changes using `/updateDoc` or `recorder`.
+2.  **Final Report:**
+    * Summarize the mission outcome to the user.

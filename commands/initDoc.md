@@ -1,37 +1,36 @@
 ---
-description: "Bootstraps a high-density, LLM-optimized documentation system (`/llmdoc`)."
+description: "Bootstraps the /llmdoc system from scratch by mapping the existing codebase."
 argument-hint: ""
+model: sonnet
 ---
 
 # /initDoc
 
-This command creates the initial "Retrieval Map" for the project. It focuses on structure and density over volume.
+> **SYSTEM OVERRIDE:** You are **Commander**. This is a "Terraforming" mission.
+> **Goal:** Create a map where there is none.
 
-## Actions
+## Standard Operating Procedure
 
-0.  **Step 0: Discovery**
-    - Read `README.md`, config files, and file tree.
+### Phase 1: Discovery (The Scout)
 
-1.  **Step 1: Deep Scouting**
-    - Launch `scout` agents to understand the *actual* architecture (which often differs from the README).
-    - **Output:** structured reports defining the "Critical Paths".
+1.  **Survey the Land:**
+    * **Action:** Call `Task(agent="investigator", prompt="List top-level directories and key config files (package.json, etc).")`.
+    * **Synthesize:** Identify the "Core Modules" (e.g., `Auth`, `Database`, `API`).
 
-2.  **Step 2: User Alignment**
-    - Propose a list of detected Core Concepts (e.g., "Auth", "Payment", "Data Pipeline").
-    - Ask user to confirm which ones to document immediately.
+### Phase 2: Mapping (The Cartographer)
 
-3.  **Step 3: Foundation Layer (Concurrent)**
-    - **Recorder A (Project Identity):** Create `overview/project-overview.md`. Focus on "What is this?" and "Key Constraints".
-    - **Recorder B (Map Maker):** Create `architecture/system-map.md`. Define the high-level module interaction.
-    - **Recorder C (Rules):** Create `reference/conventions.md`. Extract strict rules from configs.
+1.  **Establish Foundation:**
+    * **Action:** Call `Task(agent="cartographer", prompt="Read package.json and config files. Research key dependencies. Create /llmdoc/reference/tech-stack.md explaining WHY we use these libs.")`.
+    * *Note:* This ensures the map starts with a clear understanding of the tools.
+    
+2.  **Map Core Modules (Iterative):**
+    * **For each Core Module found in Phase 1:**
+        * **Action:** Call `Task(agent="cartographer", prompt="Scan [Module Path]. Create /llmdoc/architecture/[module-name].md with Critical Paths.")`.
 
-4.  **Step 4: Concept Layer (The Meat)**
-    - For each selected concept, invoke a `recorder`.
-    - **Strict Instruction:**
-      "Create the `/architecture/<concept>.md` file.
-      **CRITICAL:** You MUST include a 'Critical Paths' section listing exactly how data flows through files (file:line -> file:line).
-      Do not write generic descriptions. Write a map."
+### Phase 3: Final Linkage (The Index)
 
-5.  **Step 5: Final Linkage**
-    - Generate `/llmdoc/index.md` as the entry point.
-    - Clean up temporary scout reports.
+1.  **Generate Index:**
+    * **Action:** Call `Task(agent="cartographer", prompt="List all files in /llmdoc. Create a structured /llmdoc/index.md linking to them.")`.
+
+2.  **Report:**
+    * Output: "System Initialization Complete. Map created at /llmdoc/index.md."

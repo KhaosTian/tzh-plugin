@@ -5,46 +5,56 @@ Always answer in 简体中文
 <system-reminder>
 
 <global-philosophy>
-- **Documentation-Driven:** Code is downstream of documentation.
-- **Architectural Integrity:** Maintain the structure defined in `/llmdoc`.
-- **Atomic Execution:** Plan -> Execute -> Verify.
+- **Protocol First:** strictly follow the Standard Operating Procedures (SOP) defined in commands.
+- **Doc-Driven:** Code is downstream of documentation (`/llmdoc`).
+- **Separation of Concerns:**
+    - **Strategy:** Defined in `llmdoc/agent/strategy-*.md`.
+    - **Reality:** Defined in `src/` code.
+    - **Map:** Defined in `llmdoc/` documentation.
 </global-philosophy>
 
+<command-routing-menu>
+**Choose the right weapon for the job:**
+
+1.  **🚀 `/do [instruction]` (Direct Action)**
+    * *Use for:* Simple, clear, low-risk changes.
+    * *Flow:* User -> Worker -> Critic -> Finish.
+    * *Example:* "Fix typo in login.tsx", "Rename variable X".
+
+2.  **🛡️ `/withScout [task]` (Heavy Architecture)**
+    * *Use for:* Complex, unknown, high-risk, or multi-file tasks.
+    * *Flow:* Triage -> Investigator/Librarian -> Scout (Strategy) -> **Approval** -> Worker -> Critic -> Recorder.
+    * *Example:* "Refactor Auth module", "Investigate memory leak".
+
+3.  **🧠 `/what [vague request]` (Triage)**
+    * *Use for:* Ambiguous requests. Helps you decide between `/do` and `/withScout`.
+    * *Example:* "It's broken", "Fix the thing".
+
+4.  **🗺️ `/initDoc` (Terraforming)**
+    * *Use for:* Bootstrapping documentation from zero.
+    * *Agent:* Cartographer.
+
+5.  **📚 `/updateDoc` (Gardening)**
+    * *Use for:* Manually syncing docs after a session (auto-triggered by other commands usually).
+</command-routing-menu>
+
 <llmdoc-structure>
-- llmdoc/index.md: The main index.
-- llmdoc/architecture/: Critical Paths & Data Flow.
-- llmdoc/reference/: Source of Truth.
-*(Missing docs? Suggest `/initDoc`)*
+- `llmdoc/index.md`: The entry point.
+- `llmdoc/architecture/`: Critical Paths & Data Flow maps.
+- `llmdoc/guides/`: Step-by-step procedures.
+- `llmdoc/reference/`: Source of Truth (Configs).
+- `llmdoc/agent/`: **Strategic Memory.** (Stores `strategy-xxx.md` files).
 </llmdoc-structure>
 
-<tool-routing-guide>
-Instead of trying to handle everything yourself, Route tasks to the specialized tools:
+<interaction-rules>
+1.  **Command Mode (Absolute Override):**
+    * If a user invokes a command (e.g., `/withScout`), **IGNORE** all general chat behaviors.
+    * **STRICTLY** execute the Prompt defined in the command file (`commands/*.md`).
+    * Do not ask for confirmation unless the command specifically tells you to.
 
-1.  **Complex/Vague Tasks:** Suggest or use `/withScout`.
-    * *Why:* It handles complexity assessment, split investigation, and documentation sync automatically.
-2.  **Specific Updates:** Suggest or use `/updateDoc` after coding sessions.
-3.  **Documentation Queries:** Use `/what` (if available) or read `/llmdoc`.
-</tool-routing-guide>
-
-<tool-usage-rules>
-- **Investigation:** Prefer `/withScout` for deep dives.
-- **Execution (`sr:worker`):**
-    - MANDATORY: Always run a verification step (test/lint) after edits.
-    - Self-Correction: Retry up to 2 times before stopping.
-- **Documentation:**
-    - Staleness Check: Delete obsolete docs when updating.
-- **Completion:**
-    - Use `sr:commit` for commit messages.
-</tool-usage-rules>
-
-<interaction-mode>
-**Standard Mode:**
-For general chat, first read relevant docs (at least 1-3) to build context.
-
-**Command Mode (Override):**
-If the user invokes a specific command (e.g., `/withScout`, `/updateDoc`), **STRICTLY FOLLOW the workflow defined in that command's prompt**.
-- Do NOT stop to ask for confirmation unless the command explicitly requires it.
-- Do NOT apply generic workflows that contradict the command's specific logic.
-</interaction-mode>
+2.  **Agent Awareness:**
+    * You have a team of sub-agents (`investigator`, `scout`, `worker`, `critic`, `recorder`, `librarian`, `cartographer`).
+    * **Do not try to do their jobs yourself.** Use the `Task` tool to delegate.
+</interaction-rules>
 
 </system-reminder>
