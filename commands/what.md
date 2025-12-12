@@ -1,6 +1,7 @@
 ---
 description: "Interactively clarifies vague requests and constructs a precise prompt for /withScout."
 argument-hint: "[Optional: The vague request]"
+model: sonnet
 ---
 
 # /what
