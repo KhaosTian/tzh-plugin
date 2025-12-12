@@ -6,31 +6,33 @@ model: sonnet
 
 # /updateDoc
 
-This command synchronizes the `/llmdoc` "Retrieval Map" with the latest code reality. It bridges the gap between *what* changed (code) and *why* it changed (investigation context).
+> **SYSTEM OVERRIDE:** You are the **Documentation Manager**. Do not write to documentation files directly. Your job is to ANALYZE the situation and then DISPATCH the `recorder` agent using the `Task` tool.
 
-## When to use
+This command synchronizes the `/llmdoc` "Retrieval Map" with the latest code reality.
 
-- **Use when:** Code changes have been committed, and you need to solidify the new reality into the knowledge base.
-- **Suggest when:** A `worker` completes a complex task, especially one involving a `.scout-report`.
+## Mandatory Workflow
 
-## Actions
+### Step 1: Context Gathering & Impact Analysis (Do this yourself)
 
-1.  **Step 1: Context Gathering & Impact Analysis**
-    - **Read Code:** Run `git diff HEAD` (or staged) to see *what* changed.
-    - **Read Context (CRITICAL):** Scan the `.scout-reports/` directory for recent findings. Extract the "Key Insights" and "Relations" to understand *why* changes were made.
-    - **Concept Extraction:** Identify which *Core Concepts*, *Architectural Flows*, or *APIs* were touched.
-    - **Staleness Check:** Identify which existing documents are now obsolete, contradictory, or incorrect.
+1.  **Read Code:** Run `git diff HEAD` (or staged) to see *what* changed.
+2.  **Read Context:** Scan `.scout-reports/` for recent insights.
+3.  **Synthesize Prompt:** Create a detailed instruction for the Recorder.
+    * *Draft:* "Analyze the changes in [Files]. Update [Concepts] in /llmdoc. Note that [Context from Scout Report]."
 
-2.  **Step 2: Documentation Gardening (Content-Only Mode)**
-    - Invoke `recorder` agents for each impacted concept.
-    - **Prompt:**
-      "**Task:** Sync documentation for concept **`<concept_name>`**.
-      **1. Synthesize:** Combine the code diff (The Reality) with the `.scout-report` (The Rationale).
-      **2. Prune & Update:** Do not just append. **Rewrite** outdated sections. If a feature was removed, **DELETE** the corresponding documentation.
-      **3. Format:** Strictly follow the `<ContentFormat_...>` structures.
-      **4. Minimality:** Be concise. This is a map for LLMs, not a novel.
-      **5. Mode:** Operate in `content-only` mode."
+### Step 2: Dispatch Recorder (MANDATORY ACTION)
 
-3.  **Step 3: Global Indexing (Full Mode)**
-    - Invoke a single `recorder` agent.
-    - **Task:** "Re-scan `/llmdoc`. Update `index.md` to remove broken links to deleted files, add new files, and ensure the map is fully traversable. Operate in `full` mode."
+1.  **Invoke Agent:**
+    * You **MUST** use the `Task` tool to launch the `recorder` agent.
+    * **Do not use `Write` or `Edit` yourself.**
+    * **Arguments:**
+        * `agent`: "recorder"
+        * `prompt`: "[Pass the Synthesized Prompt from Step 1 here]"
+
+2.  **Example Tool Call:**
+    * `Task(agent="recorder", prompt="Sync documentation for Auth module. Code added new refresh logic. Update /llmdoc/architecture/auth.md and prune outdated sections.")`
+
+### Step 3: Global Indexing
+
+1.  **Finalize:**
+    * After the recorder finishes, verify if `index.md` needs an update (e.g., if new files were created).
+    * If yes, use `Task` to call `recorder` again for `index.md`.
