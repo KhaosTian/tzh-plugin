@@ -1,7 +1,6 @@
 ---
 description: "Updates the project's 'Lessons Learned' database to prevent repeating mistakes."
 argument-hint: "[The lesson or insight]"
-model: sonnet
 ---
 
 # /memo

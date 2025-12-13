@@ -1,7 +1,6 @@
 ---
 description: "The Gardening Tool. Manually triggers the Recorder to sync /llmdoc with code reality."
 argument-hint: "[Optional: Context provided by user]"
-model: sonnet
 ---
 
 # /updateDoc

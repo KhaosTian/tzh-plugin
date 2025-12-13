@@ -1,7 +1,6 @@
 ---
 description: "Smart Commit Gateway. Analyzes changes via Critic, aligns with Strategy, and generates Conventional Commits."
 argument-hint: ""
-model: haiku
 ---
 
 # /commit

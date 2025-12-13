@@ -1,7 +1,6 @@
 ---
 description: "Direct Action Mode: Bypasses deep investigation but maintains quality control via Critic."
 argument-hint: "[Specific, explicit code instruction]"
-model: sonnet
 ---
 
 # /do

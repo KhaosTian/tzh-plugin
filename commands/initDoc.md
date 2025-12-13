@@ -1,7 +1,6 @@
 ---
 description: "Bootstraps the /llmdoc system from scratch by mapping the existing codebase."
 argument-hint: ""
-model: sonnet
 ---
 
 # /initDoc

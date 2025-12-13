@@ -1,7 +1,6 @@
 ---
 description: "The Triage Nurse. Clarifies vague requests and routes them to the correct specialist (/do, /mission, or /campaign)."
 argument-hint: "[Optional: The vague request]"
-model: sonnet
 ---
 
 # /what
