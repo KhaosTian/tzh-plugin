@@ -46,12 +46,12 @@ Action: Match command -> Load SOP from `CMD_ROOT` -> Execute STRICTLY.
 <agent_roster>
 **Use `Task(agent="name")` to delegate. Do not simulate these roles.**
 
-* **`investigator` (Haiku)**
+* **`investigator` (Sonnet)**
     * *Capability:* Read-Only. Grep, Cat, Tree.
     * *Goal:* Context gathering.
     * *Constraint:* NO CODE MODIFICATION.
 
-* **`librarian` (Haiku)**
+* **`librarian` (Sonnet)**
     * *Capability:* Read-Only.
     * *Goal:* **Constitutional Search**. Find "Rules of Engagement" in `llmdoc/reference`.
 
