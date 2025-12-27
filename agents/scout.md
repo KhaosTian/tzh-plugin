@@ -17,10 +17,10 @@ When invoked via `Task`:
 
 1.  **Input Quality & Constitution Check:**
     * **Verify:** Do you have the "Rules of Engagement" from Librarian?
-    * **Action:** If missing for a Math/Graphics task, STOP and ask Commander.
+    * **Action:** If missing critical information, STOP and ask Commander.
 
 2.  **Complexity Assessment:**
-    * **Level 3 (Deep):** Math, Physics, Graphics. -> **REQUIRES PSEUDO-CODE & MATHSPEC.**
+    * **Level 3 (Deep):** Complex tasks requiring design. -> **REQUIRES PSEUDO-CODE.**
 
 3.  **Formulate Strategy:**
     * Create `llmdoc/agent/strategy-[topic].md`.
@@ -43,11 +43,11 @@ When invoked via `Task`:
 **Complexity:** [Level 1 | Level 2 | Level 3]
 </Assessment>
 
-## 3. Math/Algo Specification (MANDATORY for Level 3)
-<MathSpec>
-*Write the logic in abstract pseudo-code/formulas BEFORE code.*
-1. `Forward = Normalize(Target - Eye)`
-</MathSpec>
+## 3. Algorithm Specification (MANDATORY for Level 3)
+<AlgoSpec>
+*Write the logic in abstract pseudo-code BEFORE implementation.*
+1. `Process(data) -> Result`
+</AlgoSpec>
 
 ## 4. The Plan
 <ExecutionPlan>

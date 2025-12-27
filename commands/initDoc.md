@@ -15,17 +15,15 @@ model: opus
 ### Phase 1: Saturation Reconnaissance (The Swarm)
 
 1.  **Deploy Survey Team:**
-    * **Action:** Launch **6 Investigators IMMEDIATELY and CONCURRENTLY**. Do not wait for one to finish before starting the next.
+    * **Action:** Launch **4 Investigators IMMEDIATELY and CONCURRENTLY**. Do not wait for one to finish before starting the next.
     * **Assignments:**
-        * **🏗️ Investigator Alpha (Infra):** `Task(agent="investigator", prompt="Read package.json, docker-compose.yml, tsconfig.json. Identify Tech Stack, Build Tools, and Dependencies.")`
-        * **🗺️ Investigator Beta (Structure):** `Task(agent="investigator", prompt="Run 'tree -L 2 -d src/'. Identify High-Level Architecture (Monolith/Microservices) and Core Modules.")`
-        * **💾 Investigator Gamma (Data):** `Task(agent="investigator", prompt="Search for database schemas (prisma, sql, mongoose) or core Interface definitions. Map the Data Model.")`
-        * **🔌 Investigator Delta (API):** `Task(agent="investigator", prompt="Search for Controller files, API routes, or GraphQL resolvers. Identify Entry Points.")`
-        * **🛠️ Investigator Epsilon (Utils):** `Task(agent="investigator", prompt="Scan 'src/utils', 'src/common', 'src/shared'. List reusable helper functions to prevent reinvention.")`
-        * **⚖️ Investigator Omega (The Lawyer):** `Task(agent="investigator", prompt="**CRITICAL MISSION:** Find the 'Implicit Constitution'. 1. Check Math libs for Coordinate System/Matrix Order. 2. Check Tests for Epsilon/Precision rules. 3. Check Linter configs for coding style. 4. Look for 'Forbidden Patterns'.")`
+        * **🏗️ Investigator Alpha (Infra):** `Task(agent="investigator", prompt="Read build configs (CMakeLists.txt, xmake.lua, *.sln, *.vcxproj, Meson.build, BUILD, Makefile), dependency configs (conanfile.txt, vcpkg.json), and linter configs (.clang-format). Identify: 1. Build System. 2. C++ Standard (from build config). 3. Dependencies. 4. Code Style.")`
+        * **🗺️ Investigator Beta (Structure):** `Task(agent="investigator", prompt="Run 'tree -L 2 -d src/'. Identify High-Level Architecture and Core Modules.")`
+        * **🛠️ Investigator Gamma (Utils):** `Task(agent="investigator", prompt="Scan 'src/utils', 'src/common', 'src/shared'. List reusable helper functions to prevent reinvention.")`
+        * **⚖️ Investigator Omega (The Lawyer):** `Task(agent="investigator", prompt="**CRITICAL MISSION:** Find the 'Implicit Constitution'. 1. Check Build configs to determine C++ standard and available features. 2. Check Linter configs for coding style. 3. Look for 'Forbidden Patterns'.")`
 
 2.  **Await Intel:**
-    * Wait for ALL 6 reports to return.
+    * Wait for ALL 4 reports to return.
 
 ### Phase 2: Mass Cartography (Parallel Mapping)
 
@@ -35,13 +33,12 @@ model: opus
     * **Action:** Call `Task` for each document type:
 
     * **Layer 1: The Constitution (Highest Priority)**
-        * **Cartographer Prime:** `Task(agent="cartographer", prompt="Context: [Omega Report]. Create /llmdoc/reference/constitution.md. **Define the Rules of Engagement:** Coordinate Systems, Matrix Conventions, Error Handling Standards, and Forbidden Patterns. Follow 'doc-standard' strictly.")`
+        * **Cartographer Prime:** `Task(agent="cartographer", prompt="Context: [Omega Report]. Create /llmdoc/reference/constitution.md. **Define the Rules of Engagement:** Coding Standards, Naming Conventions, Error Handling Standards, and Forbidden Patterns. Follow 'doc-standard' strictly.")`
 
     * **Layer 2: The Territory**
         * **Cartographer A:** `Task(agent="cartographer", prompt="Context: [Infra Report]. Create /llmdoc/reference/tech-stack.md. Adhere to doc-standard.")`
-        * **Cartographer B:** `Task(agent="cartographer", prompt="Context: [Data Report]. Create /llmdoc/reference/data-models.md. Use Type-First definitions.")`
-        * **Cartographer C:** `Task(agent="cartographer", prompt="Context: [Structure Report] & [API Report]. Create /llmdoc/architecture/system-overview.md.")`
-        * **Cartographer D:** `Task(agent="cartographer", prompt="Context: [Epsilon Report]. Create /llmdoc/reference/shared-utilities.md (The 'Don't Reinvent' List).")`
+        * **Cartographer B:** `Task(agent="cartographer", prompt="Context: [Structure Report]. Create /llmdoc/architecture/system-overview.md.")`
+        * **Cartographer C:** `Task(agent="cartographer", prompt="Context: [Gamma Report]. Create /llmdoc/reference/shared-utilities.md (The 'Don't Reinvent' List).")`
 
 ### Phase 3: Final Linkage (The Index)
 

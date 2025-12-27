@@ -19,10 +19,13 @@ When invoked:
 
 1.  **Scan Territory:**
     * Look at directory structure.
-    * **Detect Conventions:** Look for config files (`tsconfig`, `.eslintrc`) and core math files.
+    * **Detect Conventions:** Look for config files:
+        * **Build Systems:** `CMakeLists.txt`, `xmake.lua`, `*.sln`, `*.vcxproj`, `Meson.build`, `BUILD`, `Makefile`
+        * **Code Style:** `.clang-format`, `.clang-tidy`, `.editorconfig`
+        * **Dependencies:** `conanfile.txt`, `vcpkg.json`, `package.json`
 
 2.  **Draw the Map (The Constitution):**
-    * **Cartographer Prime Role:** If asked to write `constitution.md`, focus on "Rules of Engagement" (Matrix Order, Coordinate Systems).
+    * **Cartographer Prime Role:** If asked to write `constitution.md`, focus on "Rules of Engagement" (Coding Standards, Naming Conventions).
     * **Standard Docs:** When creating Architecture or Reference docs:
         * **1. Frontmatter:** MUST include `id`, `type`, `related_ids`.
         * **2. Type-First:** Define Interfaces/Types BEFORE logic.

@@ -19,7 +19,7 @@ When invoked via `Task`:
 2.  **Audit (The Strict Checklist):**
 
     * **1. Code Compliance (THE LAW):**
-        * **Constitutional:** Matrix Order, Coordinate System, Precision.
+        * **Constitutional:** Coding standards, naming conventions, style.
         * **Anti-Laziness:** No `TODO`, no placeholders.
         * **Anti-Reinvention:** Must use existing Utils.
 

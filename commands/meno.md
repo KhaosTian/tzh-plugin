@@ -1,5 +1,5 @@
 ---
-description: "Updates the project's 'Lessons Learned' database to prevent repeating mistakes."
+description: "Updates the project's 'Lessons Learned' knowledge base to prevent repeating mistakes."
 argument-hint: "[The lesson or insight]"
 ---
 

@@ -48,7 +48,6 @@ model: opus
         > **Choose Mode:**
         > - **[P] Parallel Swarm:** Execute disjoint tasks simultaneously (Fastest).
         > - **[S] Sequential:** Execute one by one (Safest).
-        > - **[T] TDD Mode:** Robust sequential execution.
         > - **[N] Abort.**"
 
 ### Phase 5: Saturation Strike (The Wolf Pack)

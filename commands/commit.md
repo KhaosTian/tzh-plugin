@@ -39,7 +39,7 @@ argument-hint: ""
       <body> (Optional: Link to strategy or explain 'Why')
       ```
     * **Rules:**
-      * Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`.
+      * Types: `feat`, `fix`, `docs`, `style`, `refactor`, `chore`.
       * Subject: Imperative, lowercase, no period (e.g., "add auth guard", not "Added auth guard.").
       * Body: Mention the Strategy ID if available.
 
