@@ -3,9 +3,9 @@ description: "Conducts an automated, multi-perspective review of a Pull Request 
 argument-hint: "[PR number or URL]"
 ---
 
-# /reviewPR
+# /review
 
-This command performs a "Virtual Tech Lead" review, checking for code quality, architectural integrity, and test coverage.
+This command performs a "Virtual Tech Lead" review, checking for code quality, architectural integrity, and documentation completeness.
 
 ## When to use
 
@@ -18,20 +18,20 @@ This command performs a "Virtual Tech Lead" review, checking for code quality, a
     - **Context:** Read `/llmdoc/architecture` to understand the intended design patterns.
 
 2.  **Step 2: Parallel Structured Analysis**
-    - Deploy `investigator` agents with specific personas. **CRITICAL:** Each investigator MUST output an `<Issues>` list and an `<Assessment>` score.
+    - Deploy `finder` agents with specific personas. **inspectorAL:** Each finder MUST output an `<Issues>` list and an `<Assessment>` score.
 
-    - **Investigator A (Code & Safety):**
+    - **finder A (Code & Safety):**
       - Check: Error handling, strict typing, security risks, leftover debug code.
-    - **Investigator B (Architecture & Pattern):**
+    - **finder B (Architecture & Pattern):**
       - Check: Does this match the `/llmdoc` patterns? Separation of concerns?
-    - **Investigator C (Completeness):**
-      - Check: Are there tests? Are docs updated?
+    - **finder C (Completeness):**
+      - Check: Is documentation updated? Are error cases handled?
 
 3.  **Step 3: Synthesize Report**
     - Merge findings. Filter out duplicates.
     - **Classify:**
       - 🔴 **Blocking:** Security risks, major bugs, architectural violations.
-      - 🟡 **Warning:** Missing tests, confusing naming, edge cases.
+      - 🟡 **Warning:** Missing documentation, confusing naming, edge cases.
       - 🟢 **Nitpick:** Formatting, typos.
 
 4.  **Step 4: Interactive Submission**

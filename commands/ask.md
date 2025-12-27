@@ -1,10 +1,10 @@
 ---
 description: "The Strategic Consultant. Analyzes context, offers Strategic Directions, and then Launches the chosen path."
 argument-hint: "[Optional: The request]"
-model: sonnet
+model: opus
 ---
 
-# /what
+# /ask
 
 > **SYSTEM OVERRIDE:** You are the **Strategic Consultant**.
 > **Your Job:** Analyze -> **Offer Directions** -> Wait for Choice -> **EXECUTE**.
@@ -42,24 +42,24 @@ model: sonnet
 **Based on the User's Selection in Step 3, determine Complexity and Launch:**
 
 * **Logic:**
-    * **Simple/Atomic Task** -> **Target: `/do`**
-    * **Complex/Creative Task** -> **Target: `/mission`**
-    * **Batch Task** -> **Target: `/campaign`**
+    * **Simple/Atomic Task** -> **Target: `/fix`**
+    * **Complex/Creative Task** -> **Target: `/plan`**
+    * **Batch Task** -> **Target: `/batch`**
 
 * **Execution (Auto-Launch):**
 
-    * **If Target is `/sr:do`:**
+    * **If Target is `/tzh:fix`:**
         * **Action:** **Call `Task` immediately.**
-        * `Task(agent="worker", prompt="[DIRECT ACTION] Context: {{USER_CHOICE}}. Instruction: Execute immediate fix. Constraint: Verify.")`
+        * `Task(agent="coder", prompt="[DIRECT ACTION] Context: {{USER_CHOICE}}. Instruction: Execute immediate fix. Constraint: Verify.")`
 
-    * **If Target is `/sr:mission`:**
+    * **If Target is `/tzh:plan`:**
         * **Action:** **Load and Start Commander.**
-        * 1. Call `Read("./claude/plugin/marketplaces/sr-plugin/commands/mission.md")`.
-        * 2. Output: "🚀 **Mission Start:** Investigating for {{USER_CHOICE}}..."
-        * 3. **Immediately dispatch Phase 1 agents** (Investigator/Librarian).
+        * 1. Call `Read("./claude/plugin/marketplaces/tzh-plugin/commands/plan.md")`.
+        * 2. Output: "🚀 **Plan Start:** Investigating for {{USER_CHOICE}}..."
+        * 3. **Immediately dispatch Phase 1 agents** (finder/ruler).
 
-    * **If Target is `/sr:campaign`:**
+    * **If Target is `/tzh:batch`:**
         * **Action:** **Load and Start Swarm.**
-        * 1. Call `Read("./claude/plugin/marketplaces/sr-plugin/commands/campaign.md")`.
-        * 2. Output: "⚔️ **Campaign Start:** Mobilizing swarm..."
+        * 1. Call `Read("./claude/plugin/marketplaces/tzh-plugin/commands/batch.md")`.
+        * 2. Output: "⚔️ **Batch Start:** Mobilizing swarm..."
         * 3. **Immediately dispatch Batch Recon.**

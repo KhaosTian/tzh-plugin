@@ -1,5 +1,5 @@
 ---
-description: "Smart Commit Gateway. Analyzes changes via Critic, aligns with Strategy, and generates Conventional Commits."
+description: "Smart Commit Gateway. Analyzes changes via inspector, aligns with Strategy, and generates Conventional Commits."
 argument-hint: ""
 ---
 
@@ -10,16 +10,16 @@ argument-hint: ""
 
 ## SOP
 
-### Phase 1: The Inspection (Critic)
+### Phase 1: The Inspection (inspector)
 
 1.  **Gather Status:**
     * Run `git status` and `git diff --staged`.
     * *If nothing staged:* Ask user: "Nothing staged. Stage all changes? (Y/N)" -> If Y, `git add .`.
 
 2.  **Security Check (Dispatch MP):**
-    * **Action:** Call `Task(agent="critic", prompt="Scan the STAGED diffs. Check for: 1. Console logs/Debuggers. 2. Secrets. 3. Conflict markers. Return PASS or FAIL.")`.
+    * **Action:** Call `Task(agent="inspector", prompt="Scan the STAGED diffs. Check for: 1. Console logs/Debuggers. 2. Secrets. 3. Conflict markers. Return PASS or FAIL.")`.
     * **Logic:**
-        * **If FAIL:** Warn user: "⚠️ Critic found issues: [Issues]. Proceed anyway? (Y/N)"
+        * **If FAIL:** Warn user: "⚠️ inspector found issues: [Issues]. Proceed anyway? (Y/N)"
         * **If PASS:** Proceed to Phase 2.
 
 ### Phase 2: The Context (Strategy)
@@ -39,7 +39,7 @@ argument-hint: ""
       <body> (Optional: Link to strategy or explain 'Why')
       ```
     * **Rules:**
-      * Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`.
+      * Types: `feat`, `fix`, `docs`, `style`, `refactor`, `chore`.
       * Subject: Imperative, lowercase, no period (e.g., "add auth guard", not "Added auth guard.").
       * Body: Mention the Strategy ID if available.
 
@@ -60,5 +60,5 @@ argument-hint: ""
 2.  **Commit:**
     * If Y: Run `git commit -m "..."`.
 
-3.  **Post-Commit Hook (Recorder):**
-    * **Suggestion:** "Commit successful. Should I run `/updateDoc` to sync the documentation map? (Y/N)"
+3.  **Post-Commit Hook (tracker):**
+    * **Suggestion:** "Commit successful. Should I run `/update` to sync the documentation map? (Y/N)"

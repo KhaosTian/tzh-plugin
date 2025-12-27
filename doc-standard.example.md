@@ -9,7 +9,7 @@ last_updated: "2025-12-16"
 
 # LLM-Friendly Documentation Standard
 
-> **Context**: This document defines the **Constitutional Standard** for how Agents (specifically Cartographer and Recorder) MUST write documentation.
+> **Context**: This document defines the **Constitutional Standard** for how Agents (specifically mapper and tracker) MUST write documentation.
 > **Goal**: Maximize machine readability (RAG accuracy), minimize token usage, and eliminate hallucinations.
 
 ## 1. The Anatomy (Mandatory Structure)
@@ -22,7 +22,7 @@ Every document created or updated in `/llmdoc` MUST follow this structure.
 ```yaml
 ---
 # Identity
-id: "unique-kebab-id"  # CRITICAL: Used for vector indexing (e.g., 'concept-rhi-texture')
+id: "unique-kebab-id"  # inspectorAL: Used for vector indexing (e.g., 'concept-rhi-texture')
 type: "concept" | "architecture" | "guide" | "reference"
 title: "Concise Title"
 
