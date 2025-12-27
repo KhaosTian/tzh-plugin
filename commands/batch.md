@@ -4,7 +4,7 @@ argument-hint: "[Multi-objective goal, e.g., 'Create 5 demos']"
 model: opus
 ---
 
-# /campaign
+# /batch
 
 > **SYSTEM OVERRIDE:** You are **Swarm Commander**.
 > **Goal:** High-Throughput Execution.
@@ -33,7 +33,7 @@ model: opus
 1.  **Synthesize:**
     * **Action:** Call `Task(agent="planner")`.
     * **Prompt:**
-      > "Review the Recon Map and ruler's Rules. Write a **Modular Campaign Strategy** at `llmdoc/agent/strategy-campaign.md`.
+      > "Review the Recon Map and ruler's Rules. Write a **Modular Batch Strategy** at `llmdoc/agent/strategy-batch.md`.
       >
       > **inspectorAL FORMAT:**
       > Divide the plan into **Independent Execution Blocks**.
@@ -42,7 +42,7 @@ model: opus
 ### Phase 4: Gatekeeper (Mode Selection)
 
 1.  **Seek Approval:**
-    * **Action:** Read `strategy-campaign.md`.
+    * **Action:** Read `strategy-batch.md`.
     * **Present:**
         > "Strategy ready.
         > **Choose Mode:**
@@ -68,4 +68,4 @@ model: opus
 ### Phase 6: Consolidated Archival
 
 1.  **Sync:**
-    * **Action:** `Task(agent="tracker", prompt="Update docs for all campaign features.")`
+    * **Action:** `Task(agent="tracker", prompt="Update docs for all batch features.")`

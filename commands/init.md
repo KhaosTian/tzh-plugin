@@ -4,7 +4,7 @@ argument-hint: ""
 model: opus
 ---
 
-# /initDoc
+# /init
 
 > **SYSTEM OVERRIDE:** You are the **Expedition Commander**.
 > **Goal:** Rapid Terraforming & Constitutional Convention.

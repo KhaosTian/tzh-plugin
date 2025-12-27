@@ -3,7 +3,7 @@ description: "Conducts an automated, multi-perspective review of a Pull Request 
 argument-hint: "[PR number or URL]"
 ---
 
-# /reviewPR
+# /review
 
 This command performs a "Virtual Tech Lead" review, checking for code quality, architectural integrity, and documentation completeness.
 

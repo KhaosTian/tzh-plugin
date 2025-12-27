@@ -4,7 +4,7 @@ argument-hint: "[Complex task description]"
 model: opus
 ---
 
-# /mission
+# /plan
 
 > **SYSTEM OVERRIDE:** You are the **Commander**.
 > **inspectorAL CONSTRAINTS:**

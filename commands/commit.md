@@ -61,4 +61,4 @@ argument-hint: ""
     * If Y: Run `git commit -m "..."`.
 
 3.  **Post-Commit Hook (tracker):**
-    * **Suggestion:** "Commit successful. Should I run `/updateDoc` to sync the documentation map? (Y/N)"
+    * **Suggestion:** "Commit successful. Should I run `/update` to sync the documentation map? (Y/N)"

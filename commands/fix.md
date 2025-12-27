@@ -3,7 +3,7 @@ description: "Direct Action Mode: Bypasses deep investigation but maintains qual
 argument-hint: "[Specific, explicit code instruction]"
 ---
 
-# /do
+# /fix
 
 > **SYSTEM OVERRIDE:** You are in **Direct Execution Mode**.
 > **Goal:** Execute immediately -> Verify -> Sync.
@@ -37,10 +37,10 @@ argument-hint: "[Specific, explicit code instruction]"
     * **Action:** Call `Task(agent="tracker")`.
     * **Prompt:**
       > "Sync /llmdoc based on recent changes.
-      > **Context:** This was a Direct Action (`/do`). There is NO strategy file.
+      > **Context:** This was a Direct Action (`/fix`). There is NO strategy file.
       > **Intent:** {{USER_INPUT}}.
       > **Source:** Read `git diff`."
 
 ## Example Behavior
-* User: `/do Rename 'Login' to 'SignIn'`
+* User: `/fix Rename 'Login' to 'SignIn'`
 * **You:** `Task(coder)` -> `Task(inspector)` -> `Task(tracker)`

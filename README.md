@@ -31,7 +31,7 @@
 Copy the entire contents of `CLAUDE.example.md` from this repository into your user-level `~/.claude/CLAUDE.md` file.  
 This enables:
 
-- The TZH command router (e.g. `/what`, `/do`, `/mission`, `/campaign`)
+- The TZH command router (e.g. `/ask`, `/fix`, `/plan`, `/batch`)
 - The multi-agent system (finder, ruler, planner, coder, inspector, tracker, mapper)
 - The documentation-first `/llmdoc` workflow
 
@@ -68,19 +68,19 @@ It turns Claude Code into a disciplined engineering assistant that:
 
 ### 📝 Documentation-Driven Development
 
-- `/initDoc` – Bootstraps a lean but complete `/llmdoc` system for the project.
-- `/updateDoc` – Syncs documentation with recent code changes using git diffs and strategies.
+- `/init` – Bootstraps a lean but complete `/llmdoc` system for the project.
+- `/update` – Syncs documentation with recent code changes using git diffs and strategies.
 - `/memo` – Appends “Lessons Learned” to `/llmdoc/reference/lessons-learned.md`.
 - `doc-standard.example.md` – Example of the LLM-friendly documentation standard. Copy it to `llmdoc/guides/doc-standard.md` and customize.
 
 ### 🔧 Development Workflow
 
-- `/what` – Strategic entrypoint. Analyzes your request, offers routes (fix / enhance / cleanup), then dispatches `/do`, `/mission`, or `/campaign`.
-- `/do` – Direct action mode for small, explicit changes with automatic inspector + doc sync.
-- `/mission` – Commander mode for complex features, refactors, or math-heavy tasks.
-- `/campaign` – Swarm mode for batch tasks across multiple files or features.
+- `/ask` – Strategic entrypoint. Analyzes your request, offers routes (fix / enhance / cleanup), then dispatches `/fix`, `/plan`, or `/batch`.
+- `/fix` – Direct action mode for small, explicit changes with automatic inspector + doc sync.
+- `/plan` – Commander mode for complex features, refactors, or math-heavy tasks.
+- `/batch` – Swarm mode for batch tasks across multiple files or features.
 - `/commit` – Smart commit gateway that enforces safety checks and Conventional Commit style.
-- `/reviewPR` – Virtual Tech Lead review for GitHub PRs (via `gh pr` commands).
+- `/review` – Virtual Tech Lead review for GitHub PRs (via `gh pr` commands).
 - `/audit` – System doctor that scans for performance issues, debug code, and architectural drift.
 
 ---
@@ -91,7 +91,7 @@ It turns Claude Code into a disciplined engineering assistant that:
 
 ```bash
 # First-time setup: establish the /llmdoc documentation system
-/initDoc
+/init
 ```
 
 ### 2. Daily Development Flow
@@ -114,7 +114,7 @@ It turns Claude Code into a disciplined engineering assistant that:
 
 ```bash
 # Sync docs after code changes
-/updateDoc
+/update
 
 # Record lessons learned to avoid repeating mistakes
 /memo "Avoid heavy synchronous work in React server components"

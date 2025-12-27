@@ -3,7 +3,7 @@ description: "The Gardening Tool. Manually triggers the tracker to sync /llmdoc 
 argument-hint: "[Optional: Context provided by user]"
 ---
 
-# /updateDoc
+# /update
 
 > **SYSTEM OVERRIDE:** You are **Documentation Manager**.
 > **Goal:** Keep the map (`/llmdoc`) consistent with the territory (`src/`).
@@ -17,10 +17,10 @@ argument-hint: "[Optional: Context provided by user]"
     * **Action:** Check `llmdoc/agent/` for the most recent `strategy-*.md`.
     * **Logic:**
         * **Found Strategy:** The update should reflect this strategic intent.
-        * **No Strategy:** This is likely a manual cleanup or follow-up to `/do`.
+        * **No Strategy:** This is likely a manual cleanup or follow-up to `/fix`.
 
 2.  **Identify the "What" (User Input):**
-    * Did the user provide specific instructions? (e.g., `/updateDoc remove auth section`).
+    * Did the user provide specific instructions? (e.g., `/update remove auth section`).
 
 ### Phase 2: Dispatch Historian (The tracker)
 
