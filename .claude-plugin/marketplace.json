@@ -1,15 +1,14 @@
 {
-  "name": "sr-plugin",
+  "name": "tzh-plugin",
   "owner": {
-    "name": "Sruimeng",
-    "email": "ruimeng.suuuuu@gmail.com"
+    "name": "KhaosTian"
   },
-  "description": "Sruimeng internal Claude Code plugin marketplace",
+  "description": "KhaosTian's personal Claude Code plugin marketplace",
   "plugins": [
     {
-      "name": "sr",
+      "name": "tzh",
       "source": "./",
-      "description": "Sruimeng custom commands and agents for Claude Code"
+      "description": "KhaosTian's custom commands and agents for Claude Code"
     }
   ]
 }

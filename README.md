@@ -1,10 +1,10 @@
-# SR Claude Code Plugin
+# TZH Claude Code Plugin
 
 <div align="center">
 
-**SR Claude Code Plugin: Doc-Driven Multi-Agent Toolkit**
+**TZH Claude Code Plugin: Doc-Driven Multi-Agent Toolkit**
 
-[![GitHub - Sruimeng/sr-plugin](https://img.shields.io/badge/GitHub-Sruimeng%2Fsr--plugin-blue?logo=github)](https://github.com/Sruimeng/sr-plugin)
+[![GitHub - KhaosTian/tzh-plugin](https://img.shields.io/badge/GitHub-KhaosTian%2Ftzh--plugin-blue?logo=github)](https://github.com/KhaosTian/tzh-plugin)
 
 
 
@@ -19,11 +19,11 @@
 ### Step 1: Install Plugin
 
 ```bash
-# Add SR plugin marketplace
-/plugin marketplace add https://github.com/Sruimeng/sr-plugin
+# Add TZH plugin marketplace
+/plugin marketplace add https://github.com/KhaosTian/tzh-plugin
 
-# Install sr plugin
-/plugin install sr@sr-plugin
+# Install tzh plugin
+/plugin install tzh@tzh-plugin
 ```
 
 ### Step 2: Configure System Prompt
@@ -31,7 +31,7 @@
 Copy the entire contents of `CLAUDE.example.md` from this repository into your user-level `~/.claude/CLAUDE.md` file.  
 This enables:
 
-- The SR command router (e.g. `/what`, `/do`, `/mission`, `/campaign`)
+- The TZH command router (e.g. `/what`, `/do`, `/mission`, `/campaign`)
 - The multi-agent system (investigator, librarian, scout, worker, critic, recorder, cartographer)
 - The documentation-first `/llmdoc` workflow
 
@@ -40,12 +40,12 @@ Done. Now you can use the plugin in Claude Code normally.
 ### Update Plugin
 
 ```bash
-/plugin marketplace update https://github.com/Sruimeng/sr-plugin
+/plugin marketplace update https://github.com/KhaosTian/tzh-plugin
 ```
 
 ## About
 
-SR Claude Code Plugin is a documentation-driven, multi-agent toolkit designed by **Sruimeng** for internal and personal projects.  
+TZH Claude Code Plugin is a documentation-driven, multi-agent toolkit designed by **KhaosTian** for internal and personal projects.  
 It turns Claude Code into a disciplined engineering assistant that:
 
 - Follows `/llmdoc` as the “Constitution” of your codebase
@@ -134,7 +134,7 @@ It turns Claude Code into a disciplined engineering assistant that:
 
 <div align="center">
 
-Made with ❤️ by **Sruimeng**
+Made with ❤️ by **KhaosTian**
 
 </div>
 

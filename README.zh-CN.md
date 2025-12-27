@@ -1,10 +1,10 @@
-# SR Claude Code 插件
+# TZH Claude Code 插件
 
 <div align="center">
 
-**SR Claude Code 插件：文档驱动的多智能体工具箱**
+**TZH Claude Code 插件：文档驱动的多智能体工具箱**
 
-[![GitHub - Sruimeng/sr-plugin](https://img.shields.io/badge/GitHub-Sruimeng%2Fsr--plugin-blue?logo=github)](https://github.com/Sruimeng/sr-plugin)
+[![GitHub - KhaosTian/tzh-plugin](https://img.shields.io/badge/GitHub-KhaosTian%2Ftzh--plugin-blue?logo=github)](https://github.com/KhaosTian/tzh-plugin)
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
@@ -17,11 +17,11 @@
 ### 第一步：安装插件
 
 ```bash
-# 添加 SR 插件市场
-/plugin marketplace add https://github.com/Sruimeng/sr-plugin
+# 添加 TZH 插件市场
+/plugin marketplace add https://github.com/KhaosTian/tzh-plugin
 
-# 安装 sr 插件
-/plugin install sr@sr-plugin
+# 安装 tzh 插件
+/plugin install tzh@tzh-plugin
 ```
 
 ### 第二步：配置系统 Prompt
@@ -29,7 +29,7 @@
 将当前仓库中的 `CLAUDE.example.md` 文件内容**完整复制**到本机用户级的 `~/.claude/CLAUDE.md`。  
 这样会开启：
 
-- SR 命令路由（例如 `/what`, `/do`, `/mission`, `/campaign`）
+- TZH 命令路由（例如 `/what`, `/do`, `/mission`, `/campaign`）
 - 多智能体系统（investigator, librarian, scout, worker, critic, recorder, cartographer）
 - 以 `/llmdoc` 为核心的文档优先开发流程
 
@@ -38,12 +38,12 @@
 ### 更新插件
 
 ```bash
-/plugin marketplace update https://github.com/Sruimeng/sr-plugin
+/plugin marketplace update https://github.com/KhaosTian/tzh-plugin
 ```
 
 ## 关于
 
-SR Claude Code 插件是由 **Sruimeng** 为内部与个人项目设计的、**文档驱动 + 多智能体** 的 Claude Code 扩展。  
+TZH Claude Code 插件是由 **KhaosTian** 为内部与个人项目设计的、**文档驱动 + 多智能体** 的 Claude Code 扩展。  
 它的目标是把 Claude Code 变成一名有“宪法”的工程搭档：
 
 - 把 `/llmdoc` 视为代码库的「宪法」
@@ -132,7 +132,7 @@ SR Claude Code 插件是由 **Sruimeng** 为内部与个人项目设计的、**�
 
 <div align="center">
 
-Made with ❤️ by **Sruimeng**
+Made with ❤️ by **KhaosTian**
 
 </div>
 

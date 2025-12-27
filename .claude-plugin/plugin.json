@@ -1,8 +1,8 @@
 {
-  "name": "sr",
-  "description": "Sruimeng standard Claude Code plugin for internal team use",
+  "name": "tzh",
+  "description": "KhaosTian's standard Claude Code plugin for personal use",
   "version": "1.4.5",
   "author": {
-    "name": "Sruimeng"
+    "name": "KhaosTian"
   }
 }
