@@ -32,7 +32,7 @@ Copy the entire contents of `CLAUDE.example.md` from this repository into your u
 This enables:
 
 - The TZH command router (e.g. `/what`, `/do`, `/mission`, `/campaign`)
-- The multi-agent system (investigator, librarian, scout, worker, critic, recorder, cartographer)
+- The multi-agent system (finder, ruler, planner, coder, inspector, tracker, mapper)
 - The documentation-first `/llmdoc` workflow
 
 Done. Now you can use the plugin in Claude Code normally.
@@ -58,13 +58,13 @@ It turns Claude Code into a disciplined engineering assistant that:
 
 ### 🤖 Multi-Agent System
 
-- `investigator` – Retrieval agent: finds relevant files, existing utils, and implicit rules.
-- `librarian` – Standards agent: locates “Constitution” docs and external specs.
-- `scout` – Strategy agent: analyzes complexity and writes `strategy-*.md`.
-- `worker` – Execution agent: implements code strictly following Strategy and Constitution.
-- `critic` – Quality gate: audits code/doc for safety and standard compliance.
-- `recorder` – Documentation agent: syncs `/llmdoc` with code reality.
-- `cartographer` – Map maker: builds and maintains the `/llmdoc` structure.
+- `finder` – Retrieval agent: finds relevant files, existing utils, and implicit rules.
+- `ruler` – Standards agent: locates “Constitution” docs and external specs.
+- `planner` – Strategy agent: analyzes complexity and writes `strategy-*.md`.
+- `coder` – Execution agent: implements code strictly following Strategy and Constitution.
+- `inspector` – Quality gate: audits code/doc for safety and standard compliance.
+- `tracker` – Documentation agent: syncs `/llmdoc` with code reality.
+- `mapper` – Map maker: builds and maintains the `/llmdoc` structure.
 
 ### 📝 Documentation-Driven Development
 
@@ -76,7 +76,7 @@ It turns Claude Code into a disciplined engineering assistant that:
 ### 🔧 Development Workflow
 
 - `/what` – Strategic entrypoint. Analyzes your request, offers routes (fix / enhance / cleanup), then dispatches `/do`, `/mission`, or `/campaign`.
-- `/do` – Direct action mode for small, explicit changes with automatic critic + doc sync.
+- `/do` – Direct action mode for small, explicit changes with automatic inspector + doc sync.
 - `/mission` – Commander mode for complex features, refactors, or math-heavy tasks.
 - `/campaign` – Swarm mode for batch tasks across multiple files or features.
 - `/commit` – Smart commit gateway that enforces safety checks and Conventional Commit style.

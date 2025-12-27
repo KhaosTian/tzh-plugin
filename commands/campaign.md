@@ -23,21 +23,21 @@ model: opus
 1.  **Deploy Recon Grid:**
     * **Action:** Launch multiple agents concurrently via `Task`.
     * **Execution:**
-        * `Task(agent="investigator", prompt="[Task 1] Locate files...")`
-        * `Task(agent="investigator", prompt="[Task 2] Locate files...")`
+        * `Task(agent="finder", prompt="[Task 1] Locate files...")`
+        * `Task(agent="finder", prompt="[Task 2] Locate files...")`
         * ...
-        * **GLOBAL RULE CHECK:** `Task(agent="librarian", prompt="Scan `llmdoc/reference/` for architectural rules that apply to ALL tasks in this batch (e.g. naming conventions, base classes).")`
+        * **GLOBAL RULE CHECK:** `Task(agent="ruler", prompt="Scan `llmdoc/reference/` for architectural rules that apply to ALL tasks in this batch (e.g. naming conventions, base classes).")`
 
 ### Phase 3: Grand Strategy (The Modular Blueprint)
 
 1.  **Synthesize:**
-    * **Action:** Call `Task(agent="scout")`.
+    * **Action:** Call `Task(agent="planner")`.
     * **Prompt:**
-      > "Review the Recon Map and Librarian's Rules. Write a **Modular Campaign Strategy** at `llmdoc/agent/strategy-campaign.md`.
+      > "Review the Recon Map and ruler's Rules. Write a **Modular Campaign Strategy** at `llmdoc/agent/strategy-campaign.md`.
       >
-      > **CRITICAL FORMAT:**
+      > **inspectorAL FORMAT:**
       > Divide the plan into **Independent Execution Blocks**.
-      > Include a shared **<Constitution>** section at the top for all Workers to follow."
+      > Include a shared **<Constitution>** section at the top for all coders to follow."
 
 ### Phase 4: Gatekeeper (Mode Selection)
 
@@ -54,18 +54,18 @@ model: opus
 
 1.  **Execute (Dynamic Dispatch):**
     * **IF [P] Parallel Mode:**
-        * **Action:** Launch multiple Worker agents **AT THE SAME TIME**.
-        * `Task(agent="worker", prompt="Execute BLOCK A. Adhere to <Constitution>.")`
-        * `Task(agent="worker", prompt="Execute BLOCK B. Adhere to <Constitution>.")`
+        * **Action:** Launch multiple coder agents **AT THE SAME TIME**.
+        * `Task(agent="coder", prompt="Execute BLOCK A. Adhere to <Constitution>.")`
+        * `Task(agent="coder", prompt="Execute BLOCK B. Adhere to <Constitution>.")`
         * ...
     * **IF [S] or [T] Mode:**
-        * **Action:** Launch Worker sequentially.
+        * **Action:** Launch coder sequentially.
 
-2.  **Mass Review (Critic):**
-    * **Action:** Call `Task(agent="critic", prompt="Review ALL files. Ensure consistency across the batch and adherence to Librarian's rules.")`.
+2.  **Mass Review (inspector):**
+    * **Action:** Call `Task(agent="inspector", prompt="Review ALL files. Ensure consistency across the batch and adherence to ruler's rules.")`.
     * **Loop:** If Fail -> Batch Fix -> Retry.
 
 ### Phase 6: Consolidated Archival
 
 1.  **Sync:**
-    * **Action:** `Task(agent="recorder", prompt="Update docs for all campaign features.")`
+    * **Action:** `Task(agent="tracker", prompt="Update docs for all campaign features.")`

@@ -30,7 +30,7 @@
 这样会开启：
 
 - TZH 命令路由（例如 `/what`, `/do`, `/mission`, `/campaign`）
-- 多智能体系统（investigator, librarian, scout, worker, critic, recorder, cartographer）
+- 多智能体系统（finder, ruler, planner, coder, inspector, tracker, mapper）
 - 以 `/llmdoc` 为核心的文档优先开发流程
 
 完成后，就可以在 Claude Code 中正常使用本插件。
@@ -56,13 +56,13 @@ TZH Claude Code 插件是由 **KhaosTian** 为内部与个人项目设计的、*
 
 ### 🤖 多智能体系统
 
-- `investigator` – 检索专家：定位相关文件、已有工具函数以及隐含规则。
-- `librarian` – 标准守门人：查找「宪法」文档与外部技术规范。
-- `scout` – 策略制定者：分析复杂度并编写 `strategy-*.md`。
-- `worker` – 执行单元：按 Strategy 和 Constitution 严格落地代码实现。
-- `critic` – 质量关卡：检查安全、规范和“反懒惰”问题。
-- `recorder` – 史官：负责让 `/llmdoc` 与代码真实状态同步。
-- `cartographer` – 制图师：负责构建、维护 `/llmdoc` 文档结构。
+- `finder` – 检索专家：定位相关文件、已有工具函数以及隐含规则。
+- `ruler` – 标准守门人：查找「宪法」文档与外部技术规范。
+- `planner` – 策略制定者：分析复杂度并编写 `strategy-*.md`。
+- `coder` – 执行单元：按 Strategy 和 Constitution 严格落地代码实现。
+- `inspector` – 质量关卡：检查安全、规范和“反懒惰”问题。
+- `tracker` – 史官：负责让 `/llmdoc` 与代码真实状态同步。
+- `mapper` – 制图师：负责构建、维护 `/llmdoc` 文档结构。
 
 ### 📝 文档驱动开发
 
@@ -74,7 +74,7 @@ TZH Claude Code 插件是由 **KhaosTian** 为内部与个人项目设计的、*
 ### 🔧 开发工作流命令
 
 - `/what` – 战略入口：分析你的请求，给出 修复 / 增强 / 清理 等选项，然后再路由到 `/do`、`/mission` 或 `/campaign`。
-- `/do` – 直接执行模式：适合小而明确的修改，自动串起 Critic 检查和文档同步。
+- `/do` – 直接执行模式：适合小而明确的修改，自动串起 inspector 检查和文档同步。
 - `/mission` – 指挥官模式：应对复杂功能、新特性或涉及数学/图形的重构任务。
 - `/campaign` – 集群模式：对多文件、多目标任务进行拆分后并行执行。
 - `/commit` – 智能提交网关：在提交前做安全扫描，并生成符合 Conventional Commit 规范的提交信息。

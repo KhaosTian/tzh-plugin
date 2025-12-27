@@ -50,13 +50,13 @@ model: opus
 
     * **If Target is `/tzh:do`:**
         * **Action:** **Call `Task` immediately.**
-        * `Task(agent="worker", prompt="[DIRECT ACTION] Context: {{USER_CHOICE}}. Instruction: Execute immediate fix. Constraint: Verify.")`
+        * `Task(agent="coder", prompt="[DIRECT ACTION] Context: {{USER_CHOICE}}. Instruction: Execute immediate fix. Constraint: Verify.")`
 
     * **If Target is `/tzh:mission`:**
         * **Action:** **Load and Start Commander.**
         * 1. Call `Read("./claude/plugin/marketplaces/tzh-plugin/commands/mission.md")`.
         * 2. Output: "🚀 **Mission Start:** Investigating for {{USER_CHOICE}}..."
-        * 3. **Immediately dispatch Phase 1 agents** (Investigator/Librarian).
+        * 3. **Immediately dispatch Phase 1 agents** (finder/ruler).
 
     * **If Target is `/tzh:campaign`:**
         * **Action:** **Load and Start Swarm.**

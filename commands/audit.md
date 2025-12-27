@@ -14,10 +14,10 @@ model: opus
 ### Phase 1: Scan (The MRI)
 
 1.  **Load Standards:**
-    * **Action:** Call `Task(agent="librarian", prompt="Read `llmdoc/reference/coding-standards.md` (if exists). Extract a list of 'Forbidden Patterns'.")`.
+    * **Action:** Call `Task(agent="ruler", prompt="Read `llmdoc/reference/coding-standards.md` (if exists). Extract a list of 'Forbidden Patterns'.")`.
 
 2.  **Dispatch Radar:**
-    * **Action:** Call `Task(agent="investigator")`.
+    * **Action:** Call `Task(agent="finder")`.
     * **Prompt:**
       > "Scan [Focus Area]. Look for:
       > 1. Performance Killers (e.g., unnecessary allocations in loops).
@@ -26,7 +26,7 @@ model: opus
       > 4. Deprecated library usage."
 
 3.  **Dispatch MP (Compliance Check):**
-    * **Action:** Call `Task(agent="critic")`.
+    * **Action:** Call `Task(agent="inspector")`.
     * **Prompt:**
       > "Analyze the findings.
       > **Compare against Standards:** Do these files violate the Coding Standards or Naming Conventions defined in our docs?
@@ -36,7 +36,7 @@ model: opus
 
 1.  **Synthesize:**
     * Summarize the findings.
-    * **Action:** Call `Task(agent="cartographer", prompt="Update `llmdoc/reference/technical-debt.md` with new findings.")`.
+    * **Action:** Call `Task(agent="mapper", prompt="Update `llmdoc/reference/technical-debt.md` with new findings.")`.
 
 2.  **Report:**
     * Output a summary: "Health Check Complete. X violations found. See `technical-debt.md`."

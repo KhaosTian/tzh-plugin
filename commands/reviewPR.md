@@ -18,13 +18,13 @@ This command performs a "Virtual Tech Lead" review, checking for code quality, a
     - **Context:** Read `/llmdoc/architecture` to understand the intended design patterns.
 
 2.  **Step 2: Parallel Structured Analysis**
-    - Deploy `investigator` agents with specific personas. **CRITICAL:** Each investigator MUST output an `<Issues>` list and an `<Assessment>` score.
+    - Deploy `finder` agents with specific personas. **inspectorAL:** Each finder MUST output an `<Issues>` list and an `<Assessment>` score.
 
-    - **Investigator A (Code & Safety):**
+    - **finder A (Code & Safety):**
       - Check: Error handling, strict typing, security risks, leftover debug code.
-    - **Investigator B (Architecture & Pattern):**
+    - **finder B (Architecture & Pattern):**
       - Check: Does this match the `/llmdoc` patterns? Separation of concerns?
-    - **Investigator C (Completeness):**
+    - **finder C (Completeness):**
       - Check: Is documentation updated? Are error cases handled?
 
 3.  **Step 3: Synthesize Report**

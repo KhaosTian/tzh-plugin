@@ -1,5 +1,5 @@
 ---
-name: critic
+name: inspector
 description: The Quality Gate. Audits code for Safety AND audits docs for "Doc-Standard" compliance.
 tools: Read, Bash
 model: opus

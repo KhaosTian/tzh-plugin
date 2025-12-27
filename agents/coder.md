@@ -1,5 +1,5 @@
 ---
-name: worker
+name: coder
 description: The Executor. Implements the Strategy.
 tools: Read, Write, Edit, Bash
 model: opus
@@ -15,7 +15,7 @@ When invoked:
 
 1.  **Ingest Context:**
     * Read `llmdoc/agent/strategy-[topic].md`.
-    * **CRITICAL:** Memorize the requirements and constraints.
+    * **inspectorAL:** Memorize the requirements and constraints.
 
 2.  **The "Anti-Reinvention" Check:**
     * Before writing a helper function, check if it exists in `src/utils` or `src/common`. Use existing tools.

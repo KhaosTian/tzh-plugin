@@ -15,8 +15,8 @@ argument-hint: "[The lesson or insight]"
     * *Example:* "Next.js App Router doesn't support generic Context providers."
 
 2.  **Step 2: Archive**
-    * Call `Task(agent="recorder")`.
+    * Call `Task(agent="tracker")`.
     * **Prompt:** "Append this insight to `/llmdoc/reference/lessons-learned.md`. Format: `- **[Date] [Topic]:** [Insight]`."
 
 3.  **Step 3: Index**
-    * Ensure `investigator` and `scout` check this file in future missions.
+    * Ensure `finder` and `planner` check this file in future missions.
