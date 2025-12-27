@@ -1,7 +1,7 @@
 ---
 description: "The Grand Commander. Orchestrates the full Special Forces team via strict tool delegation."
 argument-hint: "[Complex task description]"
-model: sonnet
+model: opus
 ---
 
 # /mission

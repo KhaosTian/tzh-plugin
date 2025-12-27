@@ -1,7 +1,7 @@
 ---
 description: "The Strategic Consultant. Analyzes context, offers Strategic Directions, and then Launches the chosen path."
 argument-hint: "[Optional: The request]"
-model: sonnet
+model: opus
 ---
 
 # /what

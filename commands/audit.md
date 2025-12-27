@@ -1,7 +1,7 @@
 ---
 description: "System Doctor. Scans the codebase for technical debt, security risks, and architectural drift."
 argument-hint: "[Optional: Focus area, e.g., 'auth module' or 'unused files']"
-model: sonnet
+model: opus
 ---
 
 # /audit

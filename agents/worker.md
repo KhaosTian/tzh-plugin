@@ -2,7 +2,7 @@
 name: worker
 description: The Executor. Implements the Strategy. Strictly follows "MathSpec" and "Constitution".
 tools: Read, Write, Edit, Bash
-model: sonnet
+model: opus
 color: yellow
 ---
 

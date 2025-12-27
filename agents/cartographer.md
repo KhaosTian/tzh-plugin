@@ -2,7 +2,7 @@
 name: cartographer
 description: The Map Maker. Scans codebases to generate high-density, LLM-friendly documentation following the "Doc-Standard".
 tools: Read, Glob, Bash, Write
-model: sonnet
+model: opus
 color: orange
 ---
 

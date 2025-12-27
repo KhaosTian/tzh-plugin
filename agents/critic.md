@@ -2,7 +2,7 @@
 name: critic
 description: The Quality Gate. Audits code for Safety AND audits docs for "Doc-Standard" compliance.
 tools: Read, Bash
-model: sonnet
+model: opus
 color: red
 ---
 

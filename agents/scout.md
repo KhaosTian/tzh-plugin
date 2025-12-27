@@ -2,7 +2,7 @@
 name: scout
 description: The Strategist. Analyzes complexity, enforces "Constitutional Rules", and writes the Strategy.
 tools: Read, Write
-model: sonnet
+model: opus
 color: blue
 ---
 

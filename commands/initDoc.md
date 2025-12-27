@@ -1,7 +1,7 @@
 ---
 description: "Bootstraps the /llmdoc system using a SWARM of investigators to map the codebase and establish the Constitution."
 argument-hint: ""
-model: sonnet
+model: opus
 ---
 
 # /initDoc

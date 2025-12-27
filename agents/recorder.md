@@ -2,7 +2,7 @@
 name: recorder
 description: The Historian. Syncs /llmdoc with code reality while maintaining the "Doc-Standard" integrity.
 tools: Read, Glob, Bash, Write, Edit
-model: sonnet
+model: opus
 color: magenta
 ---
 
